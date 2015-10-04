@@ -1,0 +1,120 @@
+body {
+  padding: 50px;
+  font: 350% Impact, Charcoal, sans-serif;
+  background:url("../images/city.jpg");
+  background-repeat:no-repeat;
+  width:100%;
+  height:100%
+}
+
+body p{
+
+	font: 50% "Arial Black", Gadget, sans-serif;
+
+}
+
+.tab.active{
+	width:900x;
+}
+
+.tab.active img{
+	float:left;
+	width:15%;
+	height:15%;
+} 
+
+.tab.active p{
+	margin-left:400px;
+} 
+
+.tabs{
+border-radius: 10px;
+}
+
+.tabs ul{
+	/*make it horizontal.*/
+	width:100%;
+	height:100%;
+	float:left;
+	margin: 0 0 1em 0;
+	padding: 0;
+	list-style: none;
+	/*give background and some borders*/
+	background-color: black;
+	border-radius: 5px;
+	letter-spacing:1px;	
+}
+
+.tabs ul li a{
+	color:white;
+}
+
+.tabs ul li {
+    display:inline-block;
+    background: black;
+    margin: 0;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 100;
+    cursor: pointer;
+	
+}
+
+
+.tabs ul li:hover {
+    color: white;
+    background: gray;
+}
+
+.tabs ul li.active {
+    color: white;
+    background: gray;
+}
+
+.tabs .tab {
+    display:none;
+    background: white;
+    padding: 30px;
+    border-radius: 0 0 5px 5px;
+}
+
+.tabs .tab.active {
+    display:block;
+}
+
+/*Calendar*/
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+	background-color:white;
+}
+th, td {
+    padding: 15px;
+}
+
+#calendar td:hover{
+
+	/*background-image:
+    linear-gradient(
+      #330066, #336699
+    );*/
+	background-image:
+    linear-gradient(
+      #888888, #D0D0D0
+    );
+	color:white;
+
+}
+
+.events_here:hover{
+
+	background-image:
+    linear-gradient(
+      #330066, #336699
+    );
+
+}
+

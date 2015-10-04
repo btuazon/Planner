@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Data</title>
+	<script src="javascripts/jquery.min"></script>
+	
+	<script src="javascripts/jquery.jeditable.js"></script>
+	<script src="javascripts/jquery-ui.min.js"></script>
+	<script src="javascripts/handlebars-v3.0.3.js"></script>
+	<script src="javascripts/data.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+
+</head>
+
+<body>
+
+<script id="some-template" type="text/x-handlebars-template">
+		<table>
+			<thead> 
+				<th>UserName</th> 
+				<th>Email</th> 
+			</thead> 
+			<tbody> 
+				{{#users}} 
+				<tr id = {{_id}}> 
+					<td>{{username}}</td> 
+					<td>{{email}}</td>
+					<td><button onclick = "erase('{{_id}}')">Erase</button></td>
+				</tr> 
+				{{/users}} 
+			</tbody> 
+		</table> 
+		
+	<br>
+	
+	<table>
+	
+		<thead>
+		
+		<th>Events</th>
+		
+		</thead>
+		
+		<!--<td><p onclick="edit()">Change</p></td>-->
+		<td id ="one">(Notes Text)</td>
+		
+	</table>
+	
+	<table id="myTable">
+			<thead> 
+				<th>UserName</th> 
+				<th>Email</th> 
+			</thead> 
+			<tbody> 
+				{{#users}} 
+				<tr id = {{_id}}> 
+					<td id={{_id}} onclick = "change_username('{{_id}}')">{{username}}</td> 
+					<td id={{_id}} onclick="change_email('{{_id}}')">{{email}}</td>
+					<td><button onclick = "erase('{{_id}}')">Erase</button></td>
+				</tr> 
+				{{/users}} 
+			</tbody> 
+		</table> 
+		
+			<form method="post" action="/new">
+			<input type="username" name="username">
+			<input type="email" name="email">
+			<input type="submit" value="Submit">
+			</form>
+			
+			<!--<form method="post" action="/erase">
+			<input type="erase" name="erase">
+			<input type="submit" value="Submit">
+			</form>
+			
+			<form method="post" action="/modify">
+			<input type="target" name="target">
+			<input type="modify" name="modify">
+			<input type="modify_email" name="modify_email">
+			<input type="submit" value="Submit">
+			</form>-->
+			
+</script>
+
+<!--<button>Send an HTTP POST request to a page and get the result back</button>-->
+
+
+
+</body>
+
+</html>
