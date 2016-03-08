@@ -10,6 +10,8 @@ var users = require('./routes/users');
 
 var app = express();
 
+
+
 //connect to database.
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
@@ -30,115 +32,19 @@ app.use('/', routes);
 app.use('/users', users);
 
 
-//how to display items in the mongodb database.
-/*mongoose.model('users',{username:String, email:String},'users');
-app.get('/user', function(req,res){
-	mongoose.model('users').find(function(err, users){
-		res.send(users);
-	});
-});
-
-//remove item on click.
-app.post('/remove', function(req, res){
-	//Since the javascript and FireFox had compatibility issues, this code only works
-	//when the user refreshes it. 
-	mongoose.model('users').findOne({_id:req.body._id}).remove( function(err, result) {
-    if (err)
-       res.send('Its no use!!!');
-	else
-	{
-		res.redirect('/data.html');
-		console.log(req.body.day);//do something.
-	} 
-		
-	});
-	
-});*/
-/*
-//change email on click
-app.post('/modify_email', function(req, res){
-	mongoose.model('users').update({_id:req.body.id}, {$set:{email:req.body.value}}, function(err, result) {
-    if (err)
-       res.send('Its no use!!!');
-	else
-		res.send(req.body.value); //do something.
-});
-	
-	console.log(req.body.value);
-	console.log(req.body.id);
-});
-
-//change username on click (this needs a search for multiple username function, but that's not relevant for the calendar.)
-app.post('/modify_username', function(req, res){
-	mongoose.model('users').update({_id:req.body.id}, {$set:{username:req.body.value}}, function(err, result) {
-    if (err)
-       res.send('Its no use!!!');
-	else
-		res.send(req.body.value); //do something.
-});
-	
-	console.log(req.body.value);
-	console.log(req.body.id);
-});
-
-/*inserting stuff by making a new collection if it isn't already there.
-var Schema = new mongoose.Schema({
-	username: String,
-	email: String
-});
-
-var user = mongoose.model('emp',Schema);*/
-
-/*var user = mongoose.model('users');
-//add user by filling out fields.
-app.post('/new', function(req, res){
-	new user({
-		username: req.body.username,
-		email   : req.body.email,
-	}).save(function(err,doc){
-		if(err) res.json(err);
-		else res.redirect('/data.html');
-		
-	});
-    
-});*/
-
-/*
-//erase an item by typing out name.
-app.post('/erase', function(req, res){
-	
-	mongoose.model('users').findOne({username: req.body.erase}, function(err, document) {
-		  document.remove();
-		  res.redirect('/data.html');
-		});
-	
-});
-
-
-
-//change by filling out fields.
-app.post('/modify', function(req, res){
-	mongoose.model('users').update({username:req.body.target}, {$set:{username:req.body.modify,email:req.body.modify_email}}, function(err, result) {
-    if (err)
-       res.send('Its no use!!!');
-	else
-		res.redirect('/data.html'); //do something.
-});
-});*/
-
-
-
 //Calendar=======================================================
 mongoose.model('events',{Title:String, comments:String,month:Number,day:Number, year:Number, time: Number, location:String},'events');
 //get events with user information.
+var event = mongoose.model('events');
 app.post('/get_events', function(req,res){
 		mongoose.model('events').find({day:req.body.day, month:req.body.month, year:req.body.year}, function(err, events){
 		res.json(events);
+		//console.log(events);
+
 		//res.redirect('/home.html');
 	});
 });
 
-var event = mongoose.model('events');
 //add user by filling out fields.
 app.post('/new_event', function(req, res){
 	new event({
@@ -153,50 +59,62 @@ app.post('/new_event', function(req, res){
 	}).save(function(err,doc){
 		if(err) res.json(err);
 		else {
-			
+
 		mongoose.model('events').find({day:req.body.day, month:req.body.month, year:req.body.year}, function(err, events){
 		res.json(events);
-			
+
 		});//how to go back to the calendar and event post
 		}
 	});
-  
+
 });
 
 //remove item on click.
 app.post('/erase', function(req, res){
 	//Since the javascript and FireFox had compatibility issues, this code only works
-	//when the user refreshes it. 
+	//when the user refreshes it.
 	mongoose.model('events').findOne({_id:req.body._id}).remove(function(err, result) {
     if (err)
        res.send('Its no use!!!');
 	else
 	{
 		mongoose.model('events').find({day:req.body.day, month:req.body.month, year:req.body.year}, function(err, events){
-		res.json(events);}); 
-		
+		res.json(events);});
+
 	}
-	
+
 	});
-	
+
 });
 
+//change time on click
+app.post('/modify_time', function(req, res){
 
-
-//change email on click
-app.post('/modify_title', function(req, res){
-	mongoose.model('events').update({_id:req.body.id}, {$set:{Title:req.body.value}}, function(err, result) {
-    if (err)
+	mongoose.model('events').update({_id:req.body.id}, {$set:{time:req.body.time}}, function(err, result) {
+		if (err)
        res.send('Its no use!!!');
 	else{
-		res.send(req.body.value);
-		
-		}	
+		res.send(result);
+		}
 });
-	
-	/*console.log(req.body.value);
-	console.log(req.body.id);*/
+
 });
+
+
+//change title on click
+app.post('/modify_title', function(req, res){
+
+	mongoose.model('events').update({_id:req.body.id}, {$set:{Title:req.body.value}}, function(err, result) {
+		if (err)
+       res.send('Its no use!!!');
+	else{
+		res.send(result);
+		}
+});
+
+});
+
+
 
 
 

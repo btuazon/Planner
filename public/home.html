@@ -7,9 +7,9 @@
 	<script src="javascripts/jquery.min"></script>
 	<script src="javascripts/jquery.jeditable.js"></script>
 
-	<script src="javascripts/script.js"></script>
+	<script src="javascripts/calendar.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/style1.css">
-	
+
 </head>
 <body>
 
@@ -21,38 +21,38 @@
         <li><a href="#Calendar">Calendar</a></li>
         <li><a href="#Contact">Contact</a></li>
     </ul>
- 
+
     <div class="tab-content">
         <div id="About" class="tab active">
 			<img src="images/rainbow.jpg"/>
-            <p>Greetings! I'm Brittany, and I hail from 
-			Palm Bay, Florida. After high school, I enlisted 
-			into the United States Air Force for four years. 
-			When my contract ended, I enrolled into the 
-			University of South Florida to continue my education in 
+            <p>Greetings! I'm Brittany, and I hail from
+			Palm Bay, Florida. After high school, I enlisted
+			into the United States Air Force for four years.
+			When my contract ended, I enrolled into the
+			University of South Florida to continue my education in
 			Computer Science where I hope to earn a Bachelor's degree. </p>
-            
+
         </div>
- 
+
         <div id="Project" class="tab">
             <p>Project content goes here!</p>
-            
+
         </div>
 
         <div id="Calendar" class="tab">
            <!-- Advent Calendar -->
 
 			<table id="calendar">
-			
+
 				<thead>
-				
+
 					<tr id = "month and year"><th id = "prev"><</th>
 					<th id = "month" colspan="3"></th>
 					<th id ="year" colspan="2"></th>
 					<th id = "next">></th></tr>
-					
+
 					<tr id = "weekdays">
-					
+
 						<th>S</th>
 						<th>M</th>
 						<th>T</th>
@@ -60,85 +60,85 @@
 						<th>T</th>
 						<th>F</th>
 						<th>S</th>
-					
+
 					</tr>
-					
+
 				</thead>
-				
-				<tbody>	
+
+				<tbody>
 
 				</tbody>
-			
+
 			</table>
-			
+
 <!--Events-->
 <!--events header does not even appear-->
-<script id="some-template" type="text/x-handlebars-template">	
+<script id="some-template" type="text/x-handlebars-template">
 		<table id="events">
-		
+
 			<thead>
-			
+
 				<th>Events</th>
 				<!--put handlebars here-->
-			
+
 			</thead>
-		
+
 			<tbody id = "happen">
-				{{#event}} 
-				<tr id = {{_id}}> 
-					<td class = "title" id={{_id}} onclick = "change_title('{{_id}}')">{{Title}}</td> 
+				{{#event}}
+				<tr id = {{_id}}>
+					<td class = "title" id={{_id}} onclick="change_title('{{_id}}')">{{Title}}</td>
 					<td class = "time" id={{_id}} onclick = "change_time('{{_id}}')">{{time}}</td>
 					<td><button onclick = "erase('{{_id}}','{{day}}','{{month}}','{{year}}')">Erase</button></td>
-				</tr> 
+				</tr>
 
-				{{/event}}		
+				{{/event}}
 
 			</tbody>
-			
-			
+
+
 		</table>
 		<!--new -->
-	</script>			
-			
-			Title: <input type="Title" id="Title" name="Title">
-			Time: <input type="time" id="time" name="time">
+	</script>
+
+			Title: <input type="Title" id="Title" name="Title" class="title">
+			Time: <input type="t" id="time" name="time">
 			Comments: <input type="comments" id="comments" name="comments">
 			Location: <input type ="location" id="location" name="location">
 			<input type ="day" id="d" name="day" style="display:none">
 			<input type ="month" id="m" name="month" style="display:none">
 			<input type ="year" id="y" name="year"style="display:none">
 			<input type="submit" value="Submit" onclick="sub()">
-			
-		
-	
-		
+
+
+
+
 	</div>
 
-<!--<script id="some-template" type="text/x-handlebars-template">		
+<!--<script id="some-template" type="text/x-handlebars-template">
 			<table id="myTable">
-			<thead> 
-				<th>UserName</th> 
-				<th>Email</th> 
-			</thead> 
-			<tbody> 
-				{{#users}} 
-				<tr id = {{_id}}> 
-					<td id={{_id}} onclick = "change_username('{{_id}}')">{{username}}</td> 
+			<thead>
+				<th>UserName</th>
+				<th>Email</th>
+			</thead>
+			<tbody>
+				{{#users}}
+				<tr id = {{_id}}>
+					<td id={{_id}} onclick = "change_username('{{_id}}')">{{username}}</td>
 					<td id={{_id}} onclick="change_email('{{_id}}')">{{email}}</td>
 					<td><button onclick = "erase('{{_id}}')">Erase</button></td>
-				</tr> 
-				{{/users}} 
-			</tbody> 
-		</table> 
+				</tr>
+				{{/users}}
+			</tbody>
+		</table>
 
-		
+
 </script>-->
 
-		
-		
+
+
         <div id="Contact" class="tab">
             <p>Contact content goes here!</p>
-            
+
         </div>
     </div>
 </div>
